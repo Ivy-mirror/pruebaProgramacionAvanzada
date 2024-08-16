@@ -8,24 +8,34 @@ import { iife as funcionAutoejecudable } from "./modulo/iife.mjs";
 const instanciadorAnimales = { Aguila, Leon, Lobo, Oso, Serpiente }
 
 document.getElementById('btnRegistrar').addEventListener('click', async () => {
-  const nombre = document.getElementById('animal').value;
-  const edad = document.getElementById('edad').value;
-  const comentarios = document.getElementById('comentarios').value;
-  //await esta esperando obtener la data
-  const { imagen, sonido } = await funcionAutoejecudable.obtenerDataJson(nombre);
-// si no se rellenan todos los campos alertar
-  if (!nombre || !edad || !comentarios) {
-    alert('Por favor, rellene todos los campos.');
+  const nombreHTML = document.getElementById('animal')
+  const edadHTML = document.getElementById('edad')
+  const comentariosHTML = document.getElementById('comentarios')
+  const { imagen, sonido } = await funcionAutoejecudable.obtenerDataJson(nombreHTML.value);
+  
+  if (!nombreHTML.value || !edadHTML.value || !comentariosHTML.value) {
+    alert('Por favor, complete todos los campos.');
     return;
   }
-   // Creamos instancia de un animal
-  let animal = new instanciadorAnimales[nombre](nombre, edad, imagen, comentarios, sonido);
-   // Agregamos animal a lista de animales
+  
+  // Creamos instancia de un animal
+  let animal = new instanciadorAnimales[nombreHTML.value](
+                  nombreHTML.value, 
+                  edadHTML.value,
+                  imagen,
+                  comentariosHTML.value,
+                  sonido
+                );
+  
+  // Agregamos animal a lista de animales
   funcionAutoejecudable.addAnimal(animal)
-   // Mostramos por consola
-  funcionAutoejecudable.animalsArray
-})
+  
+  // Mostramos en contenedor de animales
+  funcionAutoejecudable.cardsAnimal(funcionAutoejecudable.animalsArray, 'Animales')
 
+  // Limpiar formulario
+  funcionAutoejecudable.limpiar()
+})
 
 document.getElementById('animal').addEventListener("change", async (event) => {
   // event.target.value -> animal seleccionado

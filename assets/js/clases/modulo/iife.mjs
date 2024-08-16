@@ -25,7 +25,8 @@ const iife = (() => {
         <div class="card-body text-center">
           <h5 class="card-title">${animal.Nombre}</h5>
           <audio controls style="max-width: 100%">
-            <source src="./assets/sounds/${animal.Sonido}" type="audio/mpeg">Reproducir sonido
+            <source src="./assets/sounds/${animal.Sonido}" type="audio/mpeg">
+            Reproducir sonido
           </audio>
         </div>
       </div>
@@ -35,11 +36,22 @@ const iife = (() => {
     document.getElementById(id).innerHTML = cartas
   }
 
+  // Función para devolver el formulario en un estado inicial
+  let limpiar = () => {
+    if (document.getElementById('preview').querySelector('img')){
+      document.getElementById('preview').innerHTML = ''
+    }
+    document.getElementById('animal').value = document.getElementById('animal').defaultValue
+    document.getElementById('edad').value = document.getElementById('edad').defaultValue
+    document.getElementById('comentarios').value = document.getElementById('comentarios').defaultValue
+  }
+
   return {
     obtenerDataJson,
     cardsAnimal,
     addAnimal,
-    animalsArray
+    animalsArray,
+    limpiar
   }
 })()
 
