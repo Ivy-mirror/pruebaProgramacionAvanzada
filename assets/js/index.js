@@ -1,9 +1,9 @@
-import { Aguila } from "./classes/Aguila.mjs";
-import { Leon } from "./classes/Leon.mjs";
-import { Lobo } from "./classes/Lobo.mjs";
-import { Oso } from "./classes/Oso.mjs";
-import { Serpiente } from "./classes/Serpiente.mjs";
-import { iife as funcionAutoejecudable } from "./modulo/iife.mjs";
+import { Aguila } from "./clases/Aguila.mjs";
+import { Leon } from "./clases/Leon.mjs";
+import { Lobo } from "./clases/Lobo.mjs";
+import { Oso } from "./clases/Oso.mjs";
+import { Serpiente } from "./clases/Serpiente.mjs";
+import { iife as funcionAutoejecudable } from "./clases/modulo/iife.mjs";
 
 const instanciadorAnimales = { Aguila, Leon, Lobo, Oso, Serpiente }
 
